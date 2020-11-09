@@ -74,3 +74,8 @@ Mods/*
 *.pak
 
 Plugins/Developer
+
+dist/*.zip
+dist/*.pak
+
+.idea

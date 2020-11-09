@@ -1,0 +1,28 @@
+{
+    "mod_id": "Ec4VHWsojn5P9z",
+    "mod_reference": "JustFly",
+    "name": "Just Fly",
+    "version": "0.1.0",
+    "sml_version": "2.0.0",
+    "remote_version": "0.1.0",
+    "description": "Simple and ergonomic flight.",
+    "authors": [
+        "kcking"
+    ],
+    "objects": [
+        {
+            "type": "pak",
+            "path": "JustFly.pak",
+            "metadata": {
+                "loading_priority": 1
+            }
+        }
+    ],
+    "resources": {
+        "icon": "logo.jpg"
+    },
+    "dependencies": {
+        "SML": "^2.0.0"
+    },
+    "optional_dependencies": {}
+}
