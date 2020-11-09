@@ -1,0 +1,1 @@
+Compress-Archive -Path "dist\data.json","dist\logo.jpg","Mods\JustFly\JustFly.pak" -DestinationPath "dist\dist.zip" -force
