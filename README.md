@@ -1,9 +1,11 @@
-# SatisfactoryModLoader [![Build Status](https://ci.ficsit.app/job/SML2/job/master/badge/icon)](https://ci.ficsit.app/job/SML2/job/master/)
-A tool used to load mods for the game Satisfactory. It's under development until Coffee Stain releases a proper Unreal modding API.
+# Just Fly
 
-# Discord Server
-Join our [discord server](https://discord.gg/QzcG9nX) to talk about SML and Satisfactory Modding in general.
+Simple and ergonomic flying for Satisfactory.
 
-# DISCLAIMER
-This software is provided by the author "as is". In no event shall the author be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any 
-theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of this software, even if advised of the possibility of such damage.
+Feel free to file issues here or reach me on the Satisfactory Modding discord (kinetic).
+
+# Attributions
+```
+Icon stock: https://www.flaticon.com/free-icon/bird_826961
+Icon design by Deantendo#4265
+```
