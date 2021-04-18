@@ -34,22 +34,49 @@ UWorldModule* AWorldModuleManager::FindModule(const FName& ModReference) const {
     return NULL;
 }
 
+FTimerHandle AWorldModuleManager::GameStateInitHandle = FTimerHandle();
+
 void AWorldModuleManager::RegisterModuleManager() {
-    //Spawn mod modules as soon as world actors are initialized (e.g static map objects are spawned)
-    FWorldDelegates::OnWorldInitializedActors.AddLambda([](const UWorld::FActorsInitializedParams Params) {
+    auto InitLambda = [](const UWorld::FActorsInitializedParams Params)
+    {
+        {
+            if (!Params.World->GetGameState())
+            {
+                // Params.World->GetTimerManager().SetTimer(AWorldModuleManager::GameStateInitHandle,[Recurse, Params](){Recurse(Recurse, Params);}, 0, false );
+                return;
+            }
+
+            Params.World->GetTimerManager().ClearTimer(AWorldModuleManager::GameStateInitHandle);
+            if (FPluginModuleLoader::ShouldLoadModulesForWorld(Params.World))
+            {
+                AWorldModuleManager* ModuleManager = AWorldModuleManager::Get(Params.World);
+                ModuleManager->Initialize();
+                ModuleManager->PostInitialize();
+            }
+        };
+    };
+    FWorldDelegates::OnWorldInitializedActors.AddLambda([InitLambda](const UWorld::FActorsInitializedParams Params) {
         if (FPluginModuleLoader::ShouldLoadModulesForWorld(Params.World)) {
-            AWorldModuleManager* ModuleManager = AWorldModuleManager::Get(Params.World);
-            ModuleManager->Initialize();
+            Params.World->GetTimerManager().SetTimer(GameStateInitHandle, [InitLambda, Params]{InitLambda(Params);}, 0.1, true);
         }
     });
     
-    //Post initialize mod modules when world is fully loaded and is ready to be used
-    FCoreUObjectDelegates::PostLoadMapWithWorld.AddLambda([](UWorld* World){
-        if (FPluginModuleLoader::ShouldLoadModulesForWorld(World)) {
-            AWorldModuleManager* ModuleManager = AWorldModuleManager::Get(World);
-            ModuleManager->PostInitialize();
-        }
-    });
+    //Spawn mod modules as soon as world actors are initialized (e.g static map objects are spawned)
+    // FWorldDelegates::OnWorldInitializedActors.AddLambda([](const UWorld::FActorsInitializedParams Params) {
+    //     if (FPluginModuleLoader::ShouldLoadModulesForWorld(Params.World)) {
+    //         AWorldModuleManager* ModuleManager = AWorldModuleManager::Get(Params.World);
+    //         ModuleManager->Initialize();
+    //     }
+    // });
+    
+    
+    // //Post initialize mod modules when world is fully loaded and is ready to be used
+    // FCoreUObjectDelegates::PostLoadMapWithWorld.AddLambda([](UWorld* World){
+    //     if (FPluginModuleLoader::ShouldLoadModulesForWorld(World)) {
+    //         AWorldModuleManager* ModuleManager = AWorldModuleManager::Get(World);
+    //         ModuleManager->PostInitialize();
+    //     }
+    // });
 }
 
 void AWorldModuleManager::Initialize() {

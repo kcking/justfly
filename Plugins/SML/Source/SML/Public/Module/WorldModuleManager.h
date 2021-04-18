@@ -41,6 +41,8 @@ private:
 
     /** Dispatches lifecycle event to all registered modules */
     void DispatchLifecycleEvent(ELifecyclePhase Phase);
+
+    static FTimerHandle GameStateInitHandle;
 };
 
 UCLASS()
