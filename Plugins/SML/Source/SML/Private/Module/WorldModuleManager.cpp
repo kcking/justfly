@@ -40,7 +40,7 @@ void AWorldModuleManager::RegisterModuleManager() {
     auto InitLambda = [](const UWorld::FActorsInitializedParams Params)
     {
         {
-            if (!Params.World->GetGameState())
+            if (!Params.World->GetGameState() || !Cast<AFGGameMode>(Params.World))
             {
                 // Params.World->GetTimerManager().SetTimer(AWorldModuleManager::GameStateInitHandle,[Recurse, Params](){Recurse(Recurse, Params);}, 0, false );
                 return;
