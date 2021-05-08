@@ -1,0 +1,25 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0.0",
+	"SemVersion": "1.0.0",
+	"FriendlyName": "Just Fly",
+	"Description": "Simple and ergonomic flight.",
+	"Category": "Modding",
+	"CreatedBy": "kinetic",
+	"CreatedByURL": "https://github.com/kcking",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "https://github.com/kcking/JustFly",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Plugins": [
+        {
+            "Name": "SML",
+            "Enabled": true,
+            "SemVersion": "^3.0.0"
+        }
+    ]
+}
