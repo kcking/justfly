@@ -1,8 +1,8 @@
 {
 	"FileVersion": 3,
 	"Version": 1,
-	"VersionName": "1.0.2",
-	"SemVersion": "1.0.2",
+	"VersionName": "1.0.3",
+	"SemVersion": "1.0.3",
 	"FriendlyName": "Just Fly",
 	"Description": "Simple and ergonomic flight.",
 	"Category": "Modding",
@@ -19,7 +19,7 @@
         {
             "Name": "SML",
             "Enabled": true,
-            "SemVersion": "^3.0.0"
+            "SemVersion": "^3.3.0"
         }
     ]
 }
